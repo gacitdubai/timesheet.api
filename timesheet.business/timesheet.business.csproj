@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\timesheet.data\timesheet.data.csproj" />
+  </ItemGroup>
+
 </Project>
