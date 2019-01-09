@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "timesheet.api", "timesheet.api\timesheet.api.csproj", "{39609E5F-0ED9-4A4A-87BD-EBA01C770A95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "timesheet.model", "..\timesheet.model\timesheet.model.csproj", "{9929AD46-4EE5-4F1F-B0E9-0B7F738B8954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "timesheet.model", "timesheet.model\timesheet.model.csproj", "{9929AD46-4EE5-4F1F-B0E9-0B7F738B8954}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timesheet.data", "timesheet.data\timesheet.data.csproj", "{7F0D2284-D648-45ED-9A57-9087CEBA1925}"
 EndProject
