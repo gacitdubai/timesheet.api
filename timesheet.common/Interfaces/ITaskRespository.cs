@@ -11,7 +11,6 @@ namespace timesheet.common.Interfaces
         Task<bool> AddNewTask(AddNewTaskRequest request);
         Task<bool> AddNewEmployeeTask(EmployeeTasks request);
 
-        Task<timesheet.model.Task> GetTaskById(int id);
 
         Task<List<EffortReportDto>> GenerateEffortReportByMonth(int month, int year);
     }

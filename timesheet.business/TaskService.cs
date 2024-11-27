@@ -41,7 +41,7 @@ namespace timesheet.business
                 {
                     throw new ArgumentNullException("CreateTimeEntryRequest cannot be null");
                 }
-                var selectedTask = await _taskRepository.GetTaskById(request.TaskId)
+                var selectedTask = await _taskRepository.GetTaskById(request.TaskId);
                 var employee = await _employeeService.GetEmployee(request.EmployeeId);
                 var employeeTask = _mapper.Map<EmployeeTasks>(request);
                 var recordCreationStatus = await _taskRepository.AddNewEmployeeTask(employeeTask);
