@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\timesheet.common\timesheet.common.csproj" />
     <ProjectReference Include="..\timesheet.data\timesheet.data.csproj" />
   </ItemGroup>
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using timesheet.data;
 
@@ -11,9 +12,11 @@ using timesheet.data;
 namespace timesheet.data.Migrations
 {
     [DbContext(typeof(TimesheetDb))]
-    partial class TimesheetDbModelSnapshot : ModelSnapshot
+    [Migration("20241127161631_EmployeeTaskAdded")]
+    partial class EmployeeTaskAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,40 +38,14 @@ namespace timesheet.data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int?>("EmployeeRankId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int>("RankId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeRankId");
 
                     b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("timesheet.model.EmployeeRank", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Rank")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EmployeeRank");
                 });
 
             modelBuilder.Entity("timesheet.model.EmployeeTasks", b =>
@@ -120,15 +97,6 @@ namespace timesheet.data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("timesheet.model.Employee", b =>
-                {
-                    b.HasOne("timesheet.model.EmployeeRank", "EmployeeRank")
-                        .WithMany()
-                        .HasForeignKey("EmployeeRankId");
-
-                    b.Navigation("EmployeeRank");
                 });
 
             modelBuilder.Entity("timesheet.model.EmployeeTasks", b =>

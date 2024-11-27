@@ -17,5 +17,10 @@ namespace timesheet.model
         [StringLength(255)]
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public int RankId { get; set; }
+
+        public virtual EmployeeRank EmployeeRank { get; set; }
     }
 }

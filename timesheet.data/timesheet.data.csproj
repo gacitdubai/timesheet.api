@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\timesheet.common\timesheet.common.csproj" />
     <ProjectReference Include="..\timesheet.model\timesheet.model.csproj" />
   </ItemGroup>
 
