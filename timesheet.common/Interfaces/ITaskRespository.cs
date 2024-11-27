@@ -10,8 +10,7 @@ namespace timesheet.common.Interfaces
         Task<timesheet.model.Task> GetTaskById(int id);
         Task<bool> AddNewTask(AddNewTaskRequest request);
         Task<bool> AddNewEmployeeTask(EmployeeTasks request);
-
-
+        Task<List<TaskDto>> Search(string searchToken);
         Task<List<EffortReportDto>> GenerateEffortReportByMonth(int month, int year);
     }
 }

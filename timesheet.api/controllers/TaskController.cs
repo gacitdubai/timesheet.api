@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
-using timesheet.business;
 using timesheet.common.Interfaces;
 using timesheet.comomon.Requests;
 
@@ -33,6 +32,17 @@ namespace timesheet.api.controllers
             }
             var newTaskCreateResponse  = await _taskService.AddNewTask(request);
             return Ok(newTaskCreateResponse);
+        }
+
+        [HttpGet("Search")]
+        public async Task<IActionResult> GetTasks([FromQuery] string searchToken)
+        {
+            if (string.IsNullOrWhiteSpace(searchToken))
+            {
+                return BadRequest("Search token is empty");
+            }
+
+            return Ok(await _taskService.Search(searchToken));
         }
 
 

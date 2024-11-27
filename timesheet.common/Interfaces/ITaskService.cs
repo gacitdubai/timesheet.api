@@ -10,5 +10,7 @@ namespace timesheet.common.Interfaces
         Task<EmployeeTimeEntry> AddNewTask(AddNewTaskRequest request);
 
         Task<List<EffortReportDto>> GetEffortMonthlyReport(int month, int year, int employeeId);
+
+        Task<List<TaskDto>> Search(string searchToken);
     }
 }

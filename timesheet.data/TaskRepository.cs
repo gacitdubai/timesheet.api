@@ -94,5 +94,25 @@ namespace timesheet.data
                 throw;
             }
         }
+
+        public async Task<List<TaskDto>> Search(string searchToken)
+        {
+            try
+            {
+                var response = await _db.Tasks.Where(x => EF.Functions.Like(x.Name, $"%{searchToken}%"))
+                    .Select(x => new TaskDto 
+                    {
+                        TaskId = x.Id,
+                        TaskName = x.Name
+                    })
+                    .ToListAsync();
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

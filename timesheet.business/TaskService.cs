@@ -42,10 +42,14 @@ namespace timesheet.business
                     throw new ArgumentNullException("CreateTimeEntryRequest cannot be null");
                 }
                 var selectedTask = await _taskRepository.GetTaskById(request.TaskId);
+
+                if (selectedTask is null)
+                    throw new Exception("Unable to find the specified Task");
+
                 var employee = await _employeeService.GetEmployee(request.EmployeeId);
                 var employeeTask = _mapper.Map<EmployeeTasks>(request);
                 var recordCreationStatus = await _taskRepository.AddNewEmployeeTask(employeeTask);
-                if (recordCreationStatus)
+                if (!recordCreationStatus)
                     throw new Exception("Unable to add the record");
                 return new EmployeeTimeEntry
                 {
@@ -84,9 +88,14 @@ namespace timesheet.business
             }
         }
 
-        public Task<EmployeeTimeEntry> AddTimeSheetEntry(AddNewTaskRequest request)
+        /// <summary>
+        /// Searchs for specified task based on Task name
+        /// </summary>
+        /// <param name="searchToken"></param>
+        /// <returns></returns>
+        public async Task<List<TaskDto>> Search(string searchToken)
         {
-            throw new NotImplementedException();
+            return await _taskRepository.Search(searchToken);
         }
     }
 }
